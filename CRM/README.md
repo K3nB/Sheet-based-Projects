@@ -95,22 +95,24 @@ Feel free to reach out for improvements, suggestions, or collaborations.
 ---
 
 ## 🔗 Some Usefull links
-- [BookingForm.html](https://github.com/Satanand-Ken/GsheetCRM/blob/main/BookingForm.html)
-- [CRM.xlsx](https://github.com/Satanand-Ken/GsheetCRM/blob/main/CRM.xlsx)
-- [Code.gs](https://github.com/Satanand-Ken/GsheetCRM/blob/main/Code.gs)
+- [BookingForm.html](https://github.com/K3nB/Sheet-based-Projects/blob/main/CRM/BookingForm.html)
+- [CRM.xlsx](https://github.com/K3nB/Sheet-based-Projects/blob/main/CRM/CRM.xlsx)
+- [Code.gs](https://github.com/K3nB/Sheet-based-Projects/blob/main/CRM/Code.gs)
 
 ---
 
 ## 👁️ Some glance of this project
 1. Form Interface
-<img width="1856" height="912" alt="image" src="https://github.com/user-attachments/assets/7a3b0a95-4f75-4079-8d80-0210e0c8d967" />
+<img width="435" height="612" alt="image" src="https://github.com/user-attachments/assets/b70a9323-7d8c-4579-bcab-ea3b98412a59" />
+
 
 2. Home Page
   - Used some KPIs to ditect duplicate entries.
   - At the top of table you can the the total complaint resolved and pending complaints.
   - I added some time delay band formating which indicate the age of the complaint.
     
-<img width="1850" height="795" alt="image" src="https://github.com/user-attachments/assets/1d688c0d-b048-497b-ae3e-03998a13b549" />
+<img width="823" height="519" alt="image" src="https://github.com/user-attachments/assets/2666da80-4718-4b8b-a8f0-47946a98737b" />
+
 ### Read at below sentence ⬇️  
 
 - `There is a lot of feature which i am going to add in this project and you can also suggest me what i can add in this`
