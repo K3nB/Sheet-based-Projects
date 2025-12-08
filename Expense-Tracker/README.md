@@ -15,9 +15,9 @@ You can:
 
 ## 📸 UI Preview
 
-> Add your screenshot to the repo (e.g. `screenshot.png`) and uncomment this line:
 
 <!-- ![Family Expense Tracker Screenshot](./screenshot.png) -->
+<img width="943" height="865" alt="image" src="https://github.com/user-attachments/assets/4a75a9b2-add5-4f91-8c21-e2e858ce6ca2" />
 
 ---
 
@@ -220,11 +220,6 @@ The front-end then renders this array as the history table and calculates totals
 * Monthly summary per member
 * Charts dashboard (Pie, Bar) using another HTML page / Looker Studio
 * Export history to PDF
-
----
-## Glance of Exepense Web Page
-
-<img width="943" height="865" alt="image" src="https://github.com/user-attachments/assets/a334e0d5-2f6b-4ab4-bdd7-c2d710292c0d" />
 
 ---
 ## 👤 Author
