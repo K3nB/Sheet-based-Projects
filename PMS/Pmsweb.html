@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e0e5ec;
+            color: #5a6c7d;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+            background: #e0e5ec;
+            border-radius: 30px;
+            box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
+                        -9px -9px 16px rgba(255, 255, 255, 0.5);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            color: #7a8c9e;
+            margin-bottom: 20px;
+        }
+
+        .header .tagline {
+            font-size: 1em;
+            color: #95a5a6;
+            font-style: italic;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 15px 40px;
+            margin: 20px 10px;
+            background: #e0e5ec;
+            color: #5a6c7d;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 6px 6px 12px rgba(163, 177, 198, 0.6),
+                        -6px -6px 12px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            box-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.6),
+                        inset -4px -4px 8px rgba(255, 255, 255, 0.5);
+        }
+
+        .section {
+            background: #e0e5ec;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 30px;
+            box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
+                        -9px -9px 16px rgba(255, 255, 255, 0.5);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section h3 {
+            color: #34495e;
+            margin: 25px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: #e0e5ec;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.4),
+                        inset -4px -4px 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .feature-card h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-card li {
+            padding: 8px 0;
+            color: #5a6c7d;
+        }
+
+        .feature-card li::before {
+            content: "▹ ";
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 8px;
+            background: #e0e5ec;
+            border-radius: 15px;
+            box-shadow: 4px 4px 8px rgba(163, 177, 198, 0.6),
+                        -4px -4px 8px rgba(255, 255, 255, 0.5);
+            color: #5a6c7d;
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            background: #e0e5ec;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: inset 2px 2px 5px rgba(163, 177, 198, 0.3),
+                        inset -2px -2px 5px rgba(255, 255, 255, 0.3);
+        }
+
+        th {
+            background: #d1d9e6;
+            color: #2c3e50;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #c5d0de;
+            color: #5a6c7d;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .code-block {
+            background: #e0e5ec;
+            padding: 20px;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            color: #2c3e50;
+            margin: 15px 0;
+            box-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.4),
+                        inset -4px -4px 8px rgba(255, 255, 255, 0.4);
+            overflow-x: auto;
+        }
+
+        .warning-box {
+            background: #e0e5ec;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #e74c3c;
+            box-shadow: 6px 6px 12px rgba(163, 177, 198, 0.6),
+                        -6px -6px 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .info-box {
+            background: #e0e5ec;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #3498db;
+            box-shadow: 6px 6px 12px rgba(163, 177, 198, 0.6),
+                        -6px -6px 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            padding: 15px;
+            margin: 15px 0;
+            background: #e0e5ec;
+            border-radius: 15px;
+            box-shadow: 4px 4px 8px rgba(163, 177, 198, 0.6),
+                        -4px -4px 8px rgba(255, 255, 255, 0.5);
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            background: #3498db;
+            color: white;
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+            background: #e0e5ec;
+            border-radius: 30px;
+            box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
+                        -9px -9px 16px rgba(255, 255, 255, 0.5);
+        }
+
+        .footer h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏭 Production Management System</h1>
+            <p class="subtitle">Google Sheets + Apps Script</p>
+            <p class="tagline">A lightweight production management system built for MSME manufacturers</p>
+            <a href="https://script.google.com/macros/s/AKfycbzbRRRKfUHErRTmnmRAc6I2Wv3Zr7H1iL8e8IlqyChMftx_R9_Zw2NeCdOCCrUE8Vs/exec" class="btn-primary" target="_blank">🔗 Launch Web App</a>
+        </div>
+
+        <div class="section">
+            <h2>✨ Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📦 Product Master</h4>
+                    <ul>
+                        <li>Manage product codes, names, units</li>
+                        <li>Track standard cycle time</li>
+                        <li>Monitor scrap % and selling price</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>⚙️ Machine Master</h4>
+                    <ul>
+                        <li>Register machines with code</li>
+                        <li>Track machine name & capacity</li>
+                        <li>Organize by location</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>📋 Production Log</h4>
+                    <ul>
+                        <li>Shift-wise production entry</li>
+                        <li>Batch number tracking</li>
+                        <li>Planned vs actual qty & scrap</li>
+                        <li>Status monitoring</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>🔗 Google Sheets DB</h4>
+                    <ul>
+                        <li>Full CRUD operations</li>
+                        <li>Easy export & backup</li>
+                        <li>Simple audit trail</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>🎨 Modern UI</h4>
+                    <ul>
+                        <li>Gradient header design</li>
+                        <li>Tab navigation</li>
+                        <li>Card-style sections</li>
+                        <li>Responsive layout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧱 Tech Stack</h2>
+            <h3>Frontend</h3>
+            <div>
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">CSS3</span>
+                <span class="tech-badge">Vanilla JavaScript</span>
+            </div>
+            <h3>Backend</h3>
+            <div>
+                <span class="tech-badge">Google Apps Script</span>
+            </div>
+            <h3>Database</h3>
+            <div>
+                <span class="tech-badge">Google Sheets</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 Google Sheets Structure</h2>
+            
+            <h3>1. MASTER_PRODUCT</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>Auto numeric ID (managed by script)</td>
+                    </tr>
+                    <tr>
+                        <td>ProductCode</td>
+                        <td>Unique product code</td>
+                    </tr>
+                    <tr>
+                        <td>ProductName</td>
+                        <td>Product name</td>
+                    </tr>
+                    <tr>
+                        <td>Unit</td>
+                        <td>PCS / BOX / etc.</td>
+                    </tr>
+                    <tr>
+                        <td>StdCycleTime</td>
+                        <td>Standard cycle time (min/pc)</td>
+                    </tr>
+                    <tr>
+                        <td>StdScrapPct</td>
+                        <td>Expected scrap percentage</td>
+                    </tr>
+                    <tr>
+                        <td>SellingPrice</td>
+                        <td>Selling price per unit</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2. MASTER_MACHINE</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>Auto numeric ID</td>
+                    </tr>
+                    <tr>
+                        <td>MachineCode</td>
+                        <td>Unique machine code</td>
+                    </tr>
+                    <tr>
+                        <td>MachineName</td>
+                        <td>Machine name</td>
+                    </tr>
+                    <tr>
+                        <td>Capacity</td>
+                        <td>Units per shift</td>
+                    </tr>
+                    <tr>
+                        <td>Location</td>
+                        <td>Line / bay / area</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3. PRODUCTION_LOG</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>Auto numeric ID</td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td>Production date</td>
+                    </tr>
+                    <tr>
+                        <td>Shift</td>
+                        <td>A / B / C</td>
+                    </tr>
+                    <tr>
+                        <td>ProductCode</td>
+                        <td>Product code (can be scanned)</td>
+                    </tr>
+                    <tr>
+                        <td>ProductName</td>
+                        <td>Product name</td>
+                    </tr>
+                    <tr>
+                        <td>BatchNo</td>
+                        <td>Batch number</td>
+                    </tr>
+                    <tr>
+                        <td>MachineCode</td>
+                        <td>Machine code</td>
+                    </tr>
+                    <tr>
+                        <td>MachineName</td>
+                        <td>Machine name</td>
+                    </tr>
+                    <tr>
+                        <td>PlannedQty</td>
+                        <td>Planned quantity</td>
+                    </tr>
+                    <tr>
+                        <td>ActualQty</td>
+                        <td>Actual produced quantity</td>
+                    </tr>
+                    <tr>
+                        <td>ScrapQty</td>
+                        <td>Scrap quantity</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>In Progress / Completed</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                ⚠️ <strong>Important:</strong> Column names must match exactly what the script expects (ID, ProductCode, etc.) or CRUD operations will break.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Setup & Deployment</h2>
+            
+            <h3>1. Copy the Code</h3>
+            <ol class="step-list">
+                <li>Open your Google Sheet</li>
+                <li>Go to <strong>Extensions → Apps Script</strong></li>
+                <li>Replace any starter code with <code>Code.gs</code> from this repo</li>
+                <li>Create a new HTML file called <code>index</code> and paste the content of <code>index.html</code></li>
+            </ol>
+
+            <h3>2. Connect to the Sheets</h3>
+            <p>Make sure sheet names are exactly:</p>
+            <ul>
+                <li>MASTER_PRODUCT</li>
+                <li>MASTER_MACHINE</li>
+                <li>PRODUCTION_LOG</li>
+            </ul>
+
+            <div class="code-block">
+const SH_PRODUCTS = 'MASTER_PRODUCT';<br>
+const SH_MACHINES = 'MASTER_MACHINE';<br>
+const SH_PROD_LOG = 'PRODUCTION_LOG';
+            </div>
+
+            <div class="info-box">
+                💡 Change these constants only if your sheet names are different
+            </div>
+
+            <h3>3. Deploy as Web App</h3>
+            <ol class="step-list">
+                <li>In Apps Script, click <strong>Deploy → New deployment</strong></li>
+                <li>Select <strong>Web app</strong></li>
+                <li>Set <strong>Execute as:</strong> Me</li>
+                <li>Set <strong>Who has access:</strong> Anyone with the link (or Only in your domain)</li>
+                <li>Click <strong>Deploy</strong> and copy the Web App URL</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Customization Ideas</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Add Operator Master</h4>
+                    <p>Link operators to production logs for better accountability</p>
+                </div>
+                <div class="feature-card">
+                    <h4>BOM & Inventory</h4>
+                    <p>Track raw material consumption per production entry</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Dashboards</h4>
+                    <p>Use Google Sheets charts for visual analytics</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Access Control</h4>
+                    <p>Protect certain sheets or ranges for shop floor users</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>✍️ Author</h3>
+            <p><strong>Satanand</strong></p>
+            <p>Email: <a href="mailto:satanand74@gmail.com">satanand74@gmail.com</a></p>
+            <p style="margin-top: 20px; font-style: italic;">More projects are on the way, so stay connected!</p>
+        </div>
+    </div>
+</body>
+</html>
